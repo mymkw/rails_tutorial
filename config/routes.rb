@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/about',   to:'static_pages#about'
   get '/contact', to: 'static_pages#contact'
   get '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
+  resources :users
 
   #get '/hogehoge',to:'controller名#hogehoge'と記述することでhogehoge_pathでアクセスが可能になる。
   #その後に  , as: 'foobar'と記述することでhogehogeにfoobar_pathでアクセス可能になる。
