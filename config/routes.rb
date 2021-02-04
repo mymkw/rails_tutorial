@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get    'sessions/new'
   root   'static_pages#home'
   get    '/help',    to: 'static_pages#help'
@@ -11,6 +13,7 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
 
   #get '/hogehoge',to:'controller名#hogehoge'と記述することでhogehoge_pathでアクセスが可能になる。
   #その後に  , as: 'foobar'と記述することでhogehogeにfoobar_pathでアクセス可能になる。
