@@ -56,17 +56,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_equal email, @user.email
   end
 
-  #↓手本通りに書いても通らない
-  #users_controller admin_user内 current_user.admin?で止まる。
-  #current_userがnilにもかかわらずadmin?をしているため
-  #
-
-  # test "should redirect destroy when not logged in" do
-  #   assert_no_difference 'User.count' do
-  #     delete user_path(@user)
-  #   end
-  #   assert_redirected_to login_url
-  # end
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'User.count' do
+      delete user_path(@user)
+    end
+    assert_redirected_to login_url
+  end  
 
   test "should redirect destroy when logged in as a non-admin" do
     log_in_as(@other_user)

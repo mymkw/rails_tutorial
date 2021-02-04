@@ -23,7 +23,7 @@ module SessionsHelper
     #ログインされていない場合
     elsif (user_id = cookies.signed[:user_id])
       user = User.find_by(id: user_id)
-      if user && user.authenticated?(cookies[:remember_token]) #cookieのremember_tokenが一致すれば
+      if user && user.authenticated?(:remember, cookies[:remember_token]) #cookieのremember_tokenが一致すれば
         log_in user #セッションに代入するだけ(上のメソッドのこと)
         @current_user = user
       end

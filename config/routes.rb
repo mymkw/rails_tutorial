@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   resources :users
+  resources :account_activations, only: [:edit]
 
   #get '/hogehoge',to:'controller名#hogehoge'と記述することでhogehoge_pathでアクセスが可能になる。
   #その後に  , as: 'foobar'と記述することでhogehogeにfoobar_pathでアクセス可能になる。
