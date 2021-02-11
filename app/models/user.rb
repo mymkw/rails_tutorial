@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  #複数のmicropostsを持つ。user.idとuser.microposts.user_idが紐づいている 
+  # dependent: :destroyはユーザーが削除されるとその人の投稿もすべて削除されるようになる
+  has_many :microposts, dependent: :destroy
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save   :downcase_email
   before_create :create_activation_digest
@@ -66,6 +69,10 @@ class User < ApplicationRecord
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+  def feed
+    Micropost.where("user_id = ?", id)
   end
 
   private
