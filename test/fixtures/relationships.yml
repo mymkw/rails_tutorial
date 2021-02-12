@@ -1,0 +1,19 @@
+one:
+  follower: michael
+  followed: lana
+  #マイケルがㇻナをフォロー
+
+two:
+  follower: michael
+  followed: malory
+  #マイケルがマロリーをフォロー
+
+three:
+  follower: lana
+  followed: michael
+  #ㇻナがマイケルをフォロー
+
+four:
+  follower: archer
+  followed: michael
+  #アーチャーがマイケルをフォロー

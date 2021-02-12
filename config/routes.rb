@@ -11,10 +11,15 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
 
   #get '/hogehoge',to:'controller名#hogehoge'と記述することでhogehoge_pathでアクセスが可能になる。
   #その後に  , as: 'foobar'と記述することでhogehogeにfoobar_pathでアクセス可能になる。
